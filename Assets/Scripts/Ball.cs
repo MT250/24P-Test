@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
+
     Rigidbody _rb;
 
     private void Awake()

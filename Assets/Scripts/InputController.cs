@@ -70,7 +70,6 @@ public class InputController : MonoBehaviour
                                         hit.point.z);
 
             player.position = pos;
-
             DrawArrowOnField();
         }
 
@@ -96,6 +95,6 @@ public class InputController : MonoBehaviour
 
         if (!arrow.gameObject.activeInHierarchy) 
             arrow.gameObject.SetActive(true);
-        arrow.GetComponent<Arrow>().DrawArrow();
+        arrow.DrawArrow();
     }
 }

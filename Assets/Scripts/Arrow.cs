@@ -15,10 +15,10 @@ public class Arrow : MonoBehaviour
     
     public void DrawArrow()
     {
+        //Sets position of arrow between ball & player
         var midpoint = _player.position + (_ball.position - _player.position) / 2;
         transform.position = midpoint;
 
-        //Sets position of arrow between ball & player
         Vector3 rotationTarget = _player.position;
         rotationTarget.y = 0f;
         rotationTarget.x -= _ball.position.x;
@@ -31,6 +31,7 @@ public class Arrow : MonoBehaviour
         //Changes scale of arrow based on distance between ball & player
         float dis = Vector3.Distance(_ball.position, _player.position);
         Vector3 newScale = new Vector3(dis / 10, dis / 10, 1f); 
+
         transform.localScale = newScale;
     }
 }

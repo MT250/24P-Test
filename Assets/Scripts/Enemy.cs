@@ -8,7 +8,7 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
-        _ball = GameObject.Find("Ball").transform;
+        _ball = GameManager.instance.ball;
     }
 
     void Update()

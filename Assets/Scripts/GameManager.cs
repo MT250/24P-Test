@@ -6,14 +6,18 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] GameObject[] goalBlocks;
 
-    public Transform enemy;
+    public Enemy enemy;
     public Transform ball;
     public Transform player;
-    public Transform arrow;
+    public Arrow arrow;
 
+    //[HideInInspector]
     public bool isLaunched = false;
+    //[HideInInspector]
     public bool isPaused = false;
+
     public int level = 1;
+    public float enemySpeedIncrease;
 
     public static GameManager instance;
 
@@ -24,14 +28,8 @@ public class GameManager : MonoBehaviour
     {
         instance = this;
 
-        ball = GameObject.Find("Ball").transform;
-        enemy = GameObject.Find("Enemy").transform;
-        player = GameObject.Find("Player").transform;
-
         ballStartPosition = ball.position;
         playerStartPosition = player.position;
-
-        Debug.Log(playerStartPosition);
     }
     public void ResetBall()
     {
@@ -39,14 +37,10 @@ public class GameManager : MonoBehaviour
         ball.position = ballStartPosition;
 
         isLaunched = false;
-
-        Debug.Log("Ball reseted.");
     }
 
     public void ResetPlayer()
     {
-
-        Debug.Log("Player reseted" + playerStartPosition);
         player.position = playerStartPosition;
     }
 
@@ -67,7 +61,7 @@ public class GameManager : MonoBehaviour
 
     private void IncreaseLevel()
     {
-        enemy.GetComponent<Enemy>().AddSpeed(.5f);
+        enemy.AddSpeed(enemySpeedIncrease);
         level++;
 
         foreach (var item in goalBlocks)
